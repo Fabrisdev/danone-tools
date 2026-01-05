@@ -3,6 +3,7 @@ import { $ } from 'bun'
 
 args.option('register', 'Register the app on your context menu')
 args.option('unregister', "Removes the app from your context menu")
+args.option('decompile', 'Decompiles a .LIN file')
 const flags = args.parse(process.argv)
 
 if(flags.register) {
