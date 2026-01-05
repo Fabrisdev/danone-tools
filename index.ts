@@ -1,11 +1,12 @@
 import args from 'args'
+import { $ } from 'bun'
 
 args.option('register', 'Register the app on your context menu')
 args.option('unregister', "Removes the app from your context menu")
 const flags = args.parse(process.argv)
 
 if(flags.register) {
-  register()
+  await register()
   process.exit(0)
 }
 
@@ -17,9 +18,17 @@ if(flags.unregister) {
 console.error('No options were supplied. Please check --help to see available commands.')
 process.exit(1)
 
-function register() {
 
-  console.log('Registered')
+async function register() {
+	const exe = process.execPath;
+
+	await $`reg add HKCR\\.lin /ve /d DanoneTools.lin /f`;
+	await $`reg add HKCR\\DanoneTools.lin\\shell\\DanoneTools /ve /d DanoneTools /f`;
+	await $`reg add HKCR\\DanoneTools.lin\\shell\\DanoneTools /v SubCommands /d "" /f`;
+	await $`reg add HKCR\\DanoneTools.lin\\shell\\DanoneTools\\shell\\Decompile /ve /d Decompile /f`;
+	await $`reg add HKCR\\DanoneTools.lin\\shell\\DanoneTools\\shell\\Decompile\\command /ve /d "\\"${exe}\\" --decompile \\"%1\\"" /f`;
+
+	console.log("DanoneTools registered succesfully.");
 }
 
 function unregister() {
