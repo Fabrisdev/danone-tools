@@ -1,20 +1,21 @@
 {
-  "name": "danone-tools",
-  "module": "index.ts",
-  "type": "module",
-  "private": true,
-  "scripts": {
-    "start": "bun run index.ts",
-    "build": "bun build ./index.ts --compile --outfile danone-tools"
-  },
-  "devDependencies": {
-    "@types/args": "^5.0.4",
-    "@types/bun": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
-  },
-  "dependencies": {
-    "args": "^5.0.3"
-  }
+	"name": "danone-tools",
+	"module": "index.ts",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"start": "bun run index.ts",
+		"build": "bun build ./index.ts --compile --outfile danone-tools"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.3.11",
+		"@types/args": "^5.0.4",
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	},
+	"dependencies": {
+		"args": "^5.0.3"
+	}
 }
