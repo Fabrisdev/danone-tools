@@ -15,7 +15,6 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "args": "^5.0.3",
-    "regedit": "^5.1.4"
+    "args": "^5.0.3"
   }
 }
