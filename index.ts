@@ -4,7 +4,7 @@ import { decompile } from "./tools";
 
 args.option("register", "Register the app on your context menu");
 args.option("unregister", "Removes the app from your context menu");
-args.option("decompile", "Decompiles a .LIN file", null);
+args.option("decompile", "Decompiles a .LIN file", "");
 const flags = args.parse(process.argv);
 
 if (flags.register) {
