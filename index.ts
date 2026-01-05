@@ -4,7 +4,7 @@ import { decompile } from "./tools";
 
 args.option("register", "Register the app on your context menu");
 args.option("unregister", "Removes the app from your context menu");
-args.option("decompile", "Decompiles a .LIN file");
+args.option("decompile", "Decompiles a .LIN file", null);
 const flags = args.parse(process.argv);
 
 if (flags.register) {
@@ -18,7 +18,12 @@ if (flags.unregister) {
 }
 
 if (flags.decompile) {
-	await decompile();
+	const filePath = flags.decompile;
+	if (typeof filePath !== "string") {
+		console.error("You must provide a file path: --decompile <file>");
+		process.exit(1);
+	}
+	await decompile(filePath);
 	process.exit(0);
 }
 

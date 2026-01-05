@@ -1,1 +1,1 @@
-export async function decompile() {}
+export async function decompile(filePath: string) {}
