@@ -10,7 +10,7 @@ export async function register() {
 	await $`reg add ${menu} /ve`;
 	await $`reg add ${menu} /v SubCommands`;
 	await $`reg add ${menu}\\shell\\Decompile /ve`;
-	await $`reg add ${menu}\\shell\\Decompile\\command /ve /d "\\"${exe}\\" --decompile \\"%1\\""`;
+	await $`reg add ${menu}\\shell\\Decompile\\command /ve /d "\"${exe}\" --decompile \"%1\""`;
 	console.log("DanoneTools registered succesfully.");
 }
 
