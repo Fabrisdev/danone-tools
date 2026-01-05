@@ -4,7 +4,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "start": "bun run index.ts"
+    "start": "bun run index.ts",
+    "build": "bun build ./index.ts --compile --outfile danone-tools"
   },
   "devDependencies": {
     "@types/args": "^5.0.4",
