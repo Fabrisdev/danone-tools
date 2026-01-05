@@ -31,6 +31,8 @@ async function register() {
 	console.log("DanoneTools registered succesfully.");
 }
 
-function unregister() {
-
+async function unregister() {
+  await $`reg delete HKCR\\DanoneTools.lin /f`;
+	await $`reg delete HKCR\\.lin /f`;
+	console.log("DanoneTools unregistered succesfully.");
 }
