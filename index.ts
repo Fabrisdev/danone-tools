@@ -1,5 +1,6 @@
 import args from 'args'
 import { $ } from 'bun'
+import { promisified as regedit } from 'regedit'
 
 args.option('register', 'Register the app on your context menu')
 args.option('unregister', "Removes the app from your context menu")
@@ -21,12 +22,37 @@ process.exit(1)
 
 async function register() {
 	const exe = process.execPath;
+  const base = 'HKCU\\Software\\Classes'
+  const appName = 'DanoneTools'
 
-	await $`reg add HKCR\\.lin /ve /d DanoneTools.lin /f`;
-	await $`reg add HKCR\\DanoneTools.lin\\shell\\DanoneTools /ve /d DanoneTools /f`;
-	await $`reg add HKCR\\DanoneTools.lin\\shell\\DanoneTools /v SubCommands /d "" /f`;
-	await $`reg add HKCR\\DanoneTools.lin\\shell\\DanoneTools\\shell\\Decompile /ve /d Decompile /f`;
-	await $`reg add HKCR\\DanoneTools.lin\\shell\\DanoneTools\\shell\\Decompile\\command /ve /d "\\"${exe}\\" --decompile \\"%1\\"" /f`;
+	await regedit.createKey([
+    `${base}\\.lin`,
+    `${base}\\${appName}.lin\\shell\\${appName}`,
+    `${base}\\${appName}.lin\\shell\\${appName}\\shell\\Decompile`,
+    `${base}\\${appName}.lin\\shell\\${appName}\\shell\\Decompile\\command`
+  ])
+
+  await regedit.putValue({
+    [`${base}\\.lin`]: {
+			'': { value: `${appName}.lin`, type: 'REG_SZ' }
+		},
+
+		[`${base}\\${appName}.lin\\shell\\${appName}`]: {
+			'': { value: appName, type: 'REG_SZ' },
+			SubCommands: { value: '', type: 'REG_SZ' }
+		},
+
+		[`${base}\\${appName}.lin\\shell\\${appName}\\shell\\Decompile`]: {
+			'': { value: 'Decompile', type: 'REG_SZ' }
+		},
+
+		[`${base}\\${appName}.lin\\shell\\${appName}\\shell\\Decompile\\command`]: {
+			'': {
+				value: `"${exe}" --decompile "%1"`,
+				type: 'REG_SZ'
+			}
+		}
+  })
 
 	console.log("DanoneTools registered succesfully.");
 }
