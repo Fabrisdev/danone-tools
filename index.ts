@@ -33,6 +33,7 @@ async function register() {
 }
 
 async function unregister() {
-  await $`reg delete HKCR\\DanoneTools.lin /f`;
+  const base = 'HKCU\\Software\\Classes'
+  await $`reg delete ${base}\\DanoneTools.lin /f`;
 	console.log("DanoneTools unregistered succesfully.");
 }
