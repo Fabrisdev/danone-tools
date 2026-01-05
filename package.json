@@ -4,9 +4,13 @@
   "type": "module",
   "private": true,
   "devDependencies": {
+    "@types/args": "^5.0.4",
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5"
+  },
+  "dependencies": {
+    "args": "^5.0.3"
   }
 }
