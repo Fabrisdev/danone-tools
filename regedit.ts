@@ -4,8 +4,8 @@ const base = "HKCU\\Software\\Classes";
 
 export async function register() {
 	const exe = process.execPath;
-	registerLinFiles(exe);
-	registerTxtFiles(exe);
+	await registerLinFiles(exe);
+	await registerTxtFiles(exe);
 	console.log("DanoneTools registered succesfully.");
 }
 
