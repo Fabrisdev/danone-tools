@@ -25,10 +25,10 @@ async function register() {
 
 	const menu = `${base}\\DanoneTools.lin\\shell\\DanoneTools`;
 
-	await $`reg add ${menu} /ve /d DanoneTools /f`;
-	await $`reg add ${menu} /v SubCommands /t REG_SZ /d "" /f`;
-	await $`reg add ${menu}\\shell\\Decompile /ve /d Decompile /f`;
-	await $`reg add ${menu}\\shell\\Decompile\\command /ve /d "\\"${exe}\\" --decompile \\"%1\\"" /f`;
+	await $`reg add ${menu} /ve`;
+	await $`reg add ${menu} /v SubCommands`;
+	await $`reg add ${menu}\\shell\\Decompile /ve`;
+	await $`reg add ${menu}\\shell\\Decompile\\command /ve /d "\\"${exe}\\" --decompile \\"%1\\""`;
 }
 
 async function unregister() {
