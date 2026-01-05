@@ -11,7 +11,7 @@ if(flags.register) {
 }
 
 if(flags.unregister) {
-  unregister()
+  await unregister()
   process.exit(0)
 }
 
