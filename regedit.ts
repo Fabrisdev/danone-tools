@@ -30,5 +30,6 @@ async function registerTxtFiles(exe: string) {
 export async function unregister() {
 	const base = "HKCU\\Software\\Classes";
 	await $`reg delete ${base}\\DanoneTools.lin /f`;
+	await $`reg delete ${base}\\DanoneTools.txt /f`;
 	console.log("DanoneTools unregistered succesfully.");
 }
