@@ -4,14 +4,17 @@ const base = "HKCU\\Software\\Classes";
 
 export async function register() {
 	const exe = process.execPath;
+	registerLinFiles(exe);
+	console.log("DanoneTools registered succesfully.");
+}
 
+async function registerLinFiles(exe: string) {
 	const menu = `${base}\\DanoneTools.lin\\shell\\DanoneTools`;
 
 	await $`reg add ${menu} /ve`;
 	await $`reg add ${menu} /v SubCommands`;
 	await $`reg add ${menu}\\shell\\Decompile /ve`;
 	await $`reg add ${menu}\\shell\\Decompile\\command /ve /d "\"${exe}\" --decompile \"%1\""`;
-	console.log("DanoneTools registered succesfully.");
 }
 
 export async function unregister() {
