@@ -20,4 +20,4 @@ bun install # Install dependencies
 ```bash
 bun run build # Builds the project
 ```
-You'll be left with a `danone-tools.exe` insdie the `out` folder.
+You'll be left with a `danone-tools.exe` inside the `out` folder.
