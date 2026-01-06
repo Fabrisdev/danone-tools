@@ -1,7 +1,9 @@
+import path from "node:path";
 import { $ } from "bun";
 
 export async function decompile(filePath: string) {
-	await $`lin_compiler.exe -d ${filePath}`;
+	const name = path.basename(filePath, path.extname(filePath));
+	await $`lin_compiler.exe -d ${filePath} ${name}.out`;
 	console.log("File decompiled succesfully.");
 }
 
