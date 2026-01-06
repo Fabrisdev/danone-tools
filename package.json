@@ -5,7 +5,7 @@
 	"private": true,
 	"scripts": {
 		"start": "bun run index.ts",
-		"build": "bun build ./index.ts --compile --outfile danone-tools"
+		"build": "bun build ./index.ts --compile --outfile out/danone-tools"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.3.11",
